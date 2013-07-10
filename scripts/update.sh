@@ -2,11 +2,13 @@
 
 mv /etc/apt/sources.list /etc/apt/sources.list.old
 
+RELEASE=$(lsb_release -c|awk '{print $2}')
+
 cat > /etc/apt/sources.list << EOF
-deb mirror://mirrors.ubuntu.com/mirrors.txt lucid main restricted universe multiverse
-deb mirror://mirrors.ubuntu.com/mirrors.txt lucid-updates main restricted universe multiverse
-deb mirror://mirrors.ubuntu.com/mirrors.txt lucid-backports main restricted universe multiverse
-deb mirror://mirrors.ubuntu.com/mirrors.txt lucid-security main restricted universe multiverse
+deb mirror://mirrors.ubuntu.com/mirrors.txt $RELEASE main restricted universe multiverse
+deb mirror://mirrors.ubuntu.com/mirrors.txt $RELEASE-updates main restricted universe multiverse
+deb mirror://mirrors.ubuntu.com/mirrors.txt $RELEASE-backports main restricted universe multiverse
+deb mirror://mirrors.ubuntu.com/mirrors.txt $RELEASE-security main restricted universe multiverse
 EOF
 
 apt-get update

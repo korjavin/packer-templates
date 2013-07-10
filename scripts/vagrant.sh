@@ -8,6 +8,7 @@ sh /tmp/vbox/VBoxLinuxAdditions.run
 umount /tmp/vbox
 rmdir /tmp/vbox
 rm *.iso
+/etc/init.d/vboxadd setup
 
 mkdir /home/vagrant/.ssh
 wget --no-check-certificate \
